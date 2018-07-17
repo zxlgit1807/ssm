@@ -1,15 +1,11 @@
 package com.zxl.model;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
+public class User {
     private String id;
 
-    private String username;
+    private String userName;
 
-    private String userpwd;
-
-    private static final long serialVersionUID = 1L;
+    private String userPwd;
 
     public String getId() {
         return id;
@@ -19,19 +15,19 @@ public class User implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
-    public String getUserpwd() {
-        return userpwd;
+    public String getUserPwd() {
+        return userPwd;
     }
 
-    public void setUserpwd(String userpwd) {
-        this.userpwd = userpwd == null ? null : userpwd.trim();
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd == null ? null : userPwd.trim();
     }
 }

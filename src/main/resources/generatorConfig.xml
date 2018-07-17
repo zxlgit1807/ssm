@@ -3,16 +3,19 @@
 <generatorConfiguration>
     <!-- 引入配置文件 -->
     <properties resource="db.properties" />
-
+    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+    <classPathEntry location="${jdbc.driverLocation}"/>
     <context id="context1">
 
         <!-- 生成的Java文件的编码 -->
         <property name="javaFileEncoding" value="UTF-8" />
 
-        <!-- 注释 -->
-        <commentGenerator type="com.hanjianchun.MyCommentGenerator">
+        <!-- 注释 需要先将这个类转为jar，放到本地仓库-->
+        <!--<commentGenerator type="com.zxl.tools.MyCommentGenerator">
+        </commentGenerator>-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
         </commentGenerator>
-
         <jdbcConnection driverClass="${oracle.jdbc.driverClass}"
                         connectionURL="${oracle.jdbc.url}" userId="${oracle.jdbc.username}" password="${oracle.jdbc.password}" >
         </jdbcConnection>
@@ -32,12 +35,12 @@
 
         <!-- targetProject:mapper映射文件生成的位置 -->
         <sqlMapGenerator targetPackage="xml"
-                         targetProject="${project}" />
+                         targetProject="./src/main/resources/mybatis-mapper" />
 
         <!-- targetPackage：mapper接口生成的位置 -->
         <javaClientGenerator targetPackage="com.zxl.dao"
                              targetProject="${project}" type="XMLMAPPER" />
 
-        <table tableName="ZXL_USER" domainObjectName="user"/>
+        <table tableName="ZXL_USER" domainObjectName="User"/>
     </context>
 </generatorConfiguration>

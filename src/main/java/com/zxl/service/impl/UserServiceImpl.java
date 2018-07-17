@@ -1,6 +1,6 @@
 package com.zxl.service.impl;
 
-import com.zxl.dao.IUserDao;
+import com.zxl.dao.UserMapper;
 import com.zxl.model.User;
 import com.zxl.service.IUserService;
 import org.springframework.stereotype.Service;
@@ -11,12 +11,11 @@ import javax.annotation.Resource;
 public class UserServiceImpl implements IUserService {
 
     @Resource
-    private IUserDao userDao;
+    private UserMapper userMapper;
 
     @Override
-    public User getTest() {
-        User user = userDao.selectByPrimaryKey( "1" );
-        return user;
+    public User getUserById(String userId) {
+        return userMapper.selectByPrimaryKey( userId );
     }
 
 }
