@@ -10,6 +10,8 @@
 			http://cxf.apache.org/jaxws
 			http://cxf.apache.org/schemas/jaxws.xsd">
 
+	<import resource="spring-shiro.xml"/>
+
 	<!--扫描dao和service层-->
 	<context:component-scan base-package="com.zxl.dao,com.zxl.service" />
 

@@ -5,7 +5,9 @@ public class User {
 
     private String userName;
 
-    private String userPwd;
+    private String loginName;
+
+    private String loginPwd;
 
     public String getId() {
         return id;
@@ -23,11 +25,19 @@ public class User {
         this.userName = userName == null ? null : userName.trim();
     }
 
-    public String getUserPwd() {
-        return userPwd;
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd == null ? null : userPwd.trim();
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getLoginPwd() {
+        return loginPwd;
+    }
+
+    public void setLoginPwd(String loginPwd) {
+        this.loginPwd = loginPwd;
     }
 }

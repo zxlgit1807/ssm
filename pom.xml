@@ -23,6 +23,8 @@
     <mybatis.version>3.2.6</mybatis.version>
     <!-- log4j日志文件管理包版本 -->
     <log4j.version>1.2.17</log4j.version>
+    <cxf.version>3.2.5</cxf.version>
+    <shiro.version>1.4.0</shiro.version>
   </properties>
 
   <dependencies>
@@ -156,18 +158,35 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-core</artifactId>
-      <version>3.1.5</version>
+      <version>${cxf.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-frontend-jaxws</artifactId>
-      <version>3.1.5</version>
+      <version>${cxf.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-transports-http</artifactId>
-      <version>3.1.5</version>
+      <version>${cxf.version}</version>
     </dependency>
+    <!-- shiro start -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <!-- shiro end -->
   </dependencies>
 
   <build>

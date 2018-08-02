@@ -9,4 +9,11 @@ public interface IUserService {
      * @return
      */
     User getUserById(String userId);
+
+    /**
+     * 通过用户名获取用户
+     * @param userName
+     * @return
+     */
+    User getUserByLoginName(String userName);
 }
