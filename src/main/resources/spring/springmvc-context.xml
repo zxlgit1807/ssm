@@ -13,5 +13,9 @@
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.zxl.controller" />
+	<!--location元素表示webapp目录下的jsp包下的所有文件；-->
+	<!--mapping元素表示以/jsp开头的所有请求路径-->
 	<mvc:resources mapping="/jsp/**" location="/jsp/" />
+	<!--对URL进行筛查，发现是静态资源的请求，则交给默认servlet处理-->
+	<mvc:default-servlet-handler/>
 </beans>
