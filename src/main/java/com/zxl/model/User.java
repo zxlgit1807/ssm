@@ -9,6 +9,8 @@ public class User {
 
     private String loginPwd;
 
+    private Object createTime;
+
     public String getId() {
         return id;
     }
@@ -30,7 +32,7 @@ public class User {
     }
 
     public void setLoginName(String loginName) {
-        this.loginName = loginName;
+        this.loginName = loginName == null ? null : loginName.trim();
     }
 
     public String getLoginPwd() {
@@ -38,6 +40,14 @@ public class User {
     }
 
     public void setLoginPwd(String loginPwd) {
-        this.loginPwd = loginPwd;
+        this.loginPwd = loginPwd == null ? null : loginPwd.trim();
+    }
+
+    public Object getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Object createTime) {
+        this.createTime = createTime;
     }
 }

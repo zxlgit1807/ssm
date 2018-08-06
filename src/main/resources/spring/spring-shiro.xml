@@ -6,10 +6,15 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/jsp/login.html"/> <!--登录页-->
-        <property name="unauthorizedUrl" value="/403.html"/>
+        <!-- 登录成功后要跳转的连接 -->
+        <property name="successUrl" value="/jsp/index.html"/>
+        <!--访问未授权的页面，要跳转的链接-->
+        <property name="unauthorizedUrl" value="/jsp/login.html"/>
+        <!--authc 表示必须授权后才能访问-->
         <property name="filterChainDefinitions">
             <value>
                 /login.html = anon
+                /loginController/login = anon
                 /** = authc
             </value>
         </property>

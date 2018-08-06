@@ -13,10 +13,26 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:spring/applicationcontext-*.xml</param-value>
     </context-param>
-
+    <!--spring5以下 log4j写法
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>-->
+    <!-- spring5  如果是用的servlet3的话，这里也不需要配置log4j 系统日志
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
     </listener>
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>

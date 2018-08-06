@@ -22,9 +22,15 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User getUserByLoginName(String userName) {
+        User user = null;
         UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        criteria.andLoginNameEqualTo(userName);
         List<User> users = userMapper.selectByExample(example);
-        return null;
+        if (users != null && !users.isEmpty()) {
+            user = users.get(0);
+        }
+        return user;
     }
 
 }
