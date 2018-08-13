@@ -33,7 +33,7 @@ public class UserController {
         ResultVo resultVo = new ResultVo();
         User user = new User();
         BeanUtils.copyProperties(userVO, user);
-        user.setLoginPwd(CryptoUtils.EncoderByMd5(user.getLoginPwd()));
+        user.setLoginPwd(CryptoUtils.EncoderByMd5(user.getLoginName(), user.getLoginPwd()));
         userService.saveUser(user);
         return resultVo;
     }

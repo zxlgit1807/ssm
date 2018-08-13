@@ -19,12 +19,12 @@
                 /** = authc
             </value>
         </property>
-       <!-- &lt;!&ndash;过滤器&ndash;&gt;
+       <!-- &lt;!&ndash;过滤器&ndash;&gt
         <property name="filters">
             <map>
-                <entry key="rolesMy" value-ref="shiroFilter"/>
+                <entry key="authc" value-ref="formAuthenticationFilter"/>
             </map>
-        </property>-->
+        </property>;-->
     </bean>
 
      <!-- 安全管理器 -->
@@ -40,6 +40,9 @@
     <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher"
           id="credentialsMatcher">
         <property name="hashAlgorithmName" value="md5"/>
+        <!--迭代次数-->
         <property name="hashIterations" value="1"/>
+        <!--表示是否存储散列后的密码为16进制，需要和生成密码时的一样，默认是base64-->
+        <property name="storedCredentialsHexEncoded" value="true"/>
     </bean>
 </beans>

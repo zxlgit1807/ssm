@@ -36,6 +36,7 @@ public class ExceptionResolverUtils implements HandlerExceptionResolver{
         } catch (IOException e1) {
             logger.error(e1.getMessage());
         }
+        logger.error("报错：{}",result.getMsg());
         return new ModelAndView();
     }
 

@@ -8,6 +8,7 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -43,13 +44,7 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String userName = (String)authenticationToken.getPrincipal();
-        if (StringUtils.isBlank(userName)) {
-            throw new MyException("用户名不能为空");
-        }
         User user = userService.getUserByLoginName(userName);
-        if (user != null) {
-            throw new MyException("密码不能为空");
-        }
-        return new SimpleAuthenticationInfo(user, user.getLoginPwd(), getName());
+        return new SimpleAuthenticationInfo(user.getLoginName(), user.getLoginPwd(), ByteSource.Util.bytes(user.getLoginName()) , getName());
     }
 }
