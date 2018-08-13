@@ -3,10 +3,10 @@
 <mapper namespace="com.zxl.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.zxl.model.User">
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="userName" jdbcType="VARCHAR" property="userName" />
-    <result column="loginName" jdbcType="VARCHAR" property="loginName" />
-    <result column="loginPwd" jdbcType="VARCHAR" property="loginPwd" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="login_pwd" jdbcType="VARCHAR" property="loginPwd" />
+    <result column="create_time" jdbcType="OTHER" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userName, loginName, loginPwd, createTime
+    id, user_name, login_name, login_pwd, create_time
   </sql>
   <select id="selectByExample" parameterType="com.zxl.model.UserExample" resultMap="BaseResultMap">
     select
@@ -100,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.zxl.model.User">
-    insert into ZXL_USER (id, userName, loginName, 
-      loginPwd, createTime)
+    insert into ZXL_USER (id, user_name, login_name, 
+      login_pwd, create_time)
     values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
-      #{loginPwd,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+      #{loginPwd,jdbcType=VARCHAR}, #{createTime,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.zxl.model.User">
     insert into ZXL_USER
@@ -112,16 +112,16 @@
         id,
       </if>
       <if test="userName != null">
-        userName,
+        user_name,
       </if>
       <if test="loginName != null">
-        loginName,
+        login_name,
       </if>
       <if test="loginPwd != null">
-        loginPwd,
+        login_pwd,
       </if>
       <if test="createTime != null">
-        createTime,
+        create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -138,7 +138,7 @@
         #{loginPwd,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+        #{createTime,jdbcType=OTHER},
       </if>
     </trim>
   </insert>
@@ -155,16 +155,16 @@
         id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.userName != null">
-        userName = #{record.userName,jdbcType=VARCHAR},
+        user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
       <if test="record.loginName != null">
-        loginName = #{record.loginName,jdbcType=VARCHAR},
+        login_name = #{record.loginName,jdbcType=VARCHAR},
       </if>
       <if test="record.loginPwd != null">
-        loginPwd = #{record.loginPwd,jdbcType=VARCHAR},
+        login_pwd = #{record.loginPwd,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
-        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+        create_time = #{record.createTime,jdbcType=OTHER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -174,10 +174,10 @@
   <update id="updateByExample" parameterType="map">
     update ZXL_USER
     set id = #{record.id,jdbcType=VARCHAR},
-      userName = #{record.userName,jdbcType=VARCHAR},
-      loginName = #{record.loginName,jdbcType=VARCHAR},
-      loginPwd = #{record.loginPwd,jdbcType=VARCHAR},
-      createTime = #{record.createTime,jdbcType=TIMESTAMP}
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      login_name = #{record.loginName,jdbcType=VARCHAR},
+      login_pwd = #{record.loginPwd,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=OTHER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,26 +186,26 @@
     update ZXL_USER
     <set>
       <if test="userName != null">
-        userName = #{userName,jdbcType=VARCHAR},
+        user_name = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="loginName != null">
-        loginName = #{loginName,jdbcType=VARCHAR},
+        login_name = #{loginName,jdbcType=VARCHAR},
       </if>
       <if test="loginPwd != null">
-        loginPwd = #{loginPwd,jdbcType=VARCHAR},
+        login_pwd = #{loginPwd,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
-        createTime = #{createTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime,jdbcType=OTHER},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zxl.model.User">
     update ZXL_USER
-    set userName = #{userName,jdbcType=VARCHAR},
-      loginName = #{loginName,jdbcType=VARCHAR},
-      loginPwd = #{loginPwd,jdbcType=VARCHAR},
-      createTime = #{createTime,jdbcType=TIMESTAMP}
+    set user_name = #{userName,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=OTHER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

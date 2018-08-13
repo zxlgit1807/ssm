@@ -2,6 +2,7 @@ package com.zxl.tools;
 
 import com.zxl.model.User;
 import com.zxl.service.IUserService;
+import com.zxl.tools.exception.MyException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -43,11 +44,11 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String userName = (String)authenticationToken.getPrincipal();
         if (StringUtils.isBlank(userName)) {
-            throw new UnknownAccountException();
+            throw new MyException("用户名不能为空");
         }
         User user = userService.getUserByLoginName(userName);
         if (user != null) {
-            throw new UnknownAccountException();
+            throw new MyException("密码不能为空");
         }
         return new SimpleAuthenticationInfo(user, user.getLoginPwd(), getName());
     }

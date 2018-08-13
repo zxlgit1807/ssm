@@ -1,6 +1,8 @@
 package com.zxl.controller;
 
+import com.zxl.tools.exception.MyException;
 import com.zxl.vo.LoginVO;
+import com.zxl.vo.ResultVo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -21,13 +23,15 @@ public class LoginController {
      * @param loginVO
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(LoginVO loginVO) {
+    public ResultVo login(LoginVO loginVO) {
+        ResultVo resultVo = new ResultVo();
         Subject subject = SecurityUtils.getSubject();
         try {
-            subject.login(new UsernamePasswordToken(loginVO.getUserName(), loginVO.getUserPwd()));
+            //subject.login(new UsernamePasswordToken(loginVO.getUserName(), loginVO.getUserPwd()));
+            subject.login(new UsernamePasswordToken("123", "123"));
         }catch (Exception e){
-            e.getMessage();
+            throw new MyException("账号或密码错误");
         }
-        return "";
+        return resultVo;
     }
 }

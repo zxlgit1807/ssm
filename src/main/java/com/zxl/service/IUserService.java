@@ -16,4 +16,10 @@ public interface IUserService {
      * @return
      */
     User getUserByLoginName(String userName);
+
+    /**
+     * 保存用户
+     * @param user
+     */
+    void saveUser(User user);
 }

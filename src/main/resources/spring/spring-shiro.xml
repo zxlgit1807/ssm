@@ -15,6 +15,7 @@
             <value>
                 /login.html = anon
                 /loginController/login = anon
+                /userController/registerUser = anon
                 /** = authc
             </value>
         </property>

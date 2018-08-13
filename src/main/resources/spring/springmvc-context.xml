@@ -45,4 +45,7 @@
 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager"/>
 	</bean>
+
+	<!--异常处理类-->
+	<bean id="exceptionResolverUtils" class="com.zxl.tools.exception.ExceptionResolverUtils"/>
 </beans>
